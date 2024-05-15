@@ -8,7 +8,7 @@ int main() {
     Racional r1(1, 2);
     Racional r2(2, 3);
 
-    // La siguientes funciones Lambda operan como parámetro del constructor
+    // Las siguientes funciones Lambda operan como parámetro del constructor
     // - Suma de dos racionales
     Racional r3(r1, r2, [](Racional r_1, Racional r_2) {
         Racional resultado = OperacionRacional::suma(r_1, r_2);
@@ -42,6 +42,31 @@ int main() {
     cout << "Racional 6: " << r6.toString() << endl;
     cout << endl;
 
+    cout << "--- Lambdas ---" << endl;
+    // Las siguientes funciones Lambda operan como funciones independientes
+    cout << "Suma de 2 números: " << [](int a, int b) -> int {return a + b;}(1, 2) << endl;
+    cout << "Producto de 3 números: " << [](int a, int b, int c) -> int {return a * b * c;}(1, 2, 3) << endl;
+    cout << "Mínimo de 3 números: " << [](int a, int b, int c) -> int {
+            if (a < b && a < c) {
+                return a;
+            } else if (b < a && b < c) {
+                return b;
+            } else {
+                return c;
+            }
+        }(4, 8, 2) << endl;
+    cout << "Máximo de 3 números: " << [](int a, int b, int c) -> int {
+        if (a > b && a > c) {
+            return a;
+        } else if (b > a && b > c) {
+            return b;
+        } else {
+            return c;
+        }
+    }(4, 8, 2) << endl;
+    cout << endl; 
+
+    cout << "--- Normales ---" << endl;
     Racional suma = OperacionRacional::suma(r1, r2);
     cout << r1.toString() << " + " << r2.toString() << " = " << suma.toString() << endl;
 
